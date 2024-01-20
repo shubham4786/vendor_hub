@@ -4,9 +4,10 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const session = useSession();
+
   useEffect(() => {
     if (session.status === "authenticated") {
       router.push("/");
@@ -27,4 +28,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
