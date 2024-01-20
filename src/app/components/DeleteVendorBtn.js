@@ -11,9 +11,12 @@ const DeleteVendorBtn = (props) => {
   const DeleteVendor = async () => {
     const isDelete = confirm("Are you sure you want to delete " + name);
     if (isDelete) {
-      let result = await fetch(`/api/vendor/${id}`, {
-        method: "DELETE",
-      });
+      let result = await fetch(
+        `https://vendor-hub-75wt.vercel.app/api/vendor/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       result = await result.json();
 

@@ -41,19 +41,22 @@ const EditVendorForm = (props) => {
       country,
       zipCode,
     } = vendorData;
-    let result = await fetch(`/api/vendor/${id}`, {
-      method: "PUT",
-      body: JSON.stringify({
-        vendorName,
-        bankAccountNo,
-        bankName,
-        addressLine1,
-        addressLine2,
-        city,
-        country,
-        zipCode,
-      }),
-    });
+    let result = await fetch(
+      `https://vendor-hub-75wt.vercel.app/api/vendor/${id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          vendorName,
+          bankAccountNo,
+          bankName,
+          addressLine1,
+          addressLine2,
+          city,
+          country,
+          zipCode,
+        }),
+      }
+    );
 
     result = await result.json();
 
@@ -67,7 +70,9 @@ const EditVendorForm = (props) => {
   };
 
   const getVendorDetails = async () => {
-    let result = await fetch(`/api/vendor/${id}`);
+    let result = await fetch(
+      `https://vendor-hub-75wt.vercel.app/api/vendor/${id}`
+    );
     result = await result.json();
 
     const {
