@@ -9,7 +9,7 @@ export const fetchVendorDetails = createAsyncThunk(
 
   async () => {
     console.log();
-    let data = await fetch(`https://vendor-hub-75wt.vercel.app/api/vendor`, {
+    let data = await fetch(`/api/vendor`, {
       cache: "no-cache",
     });
 

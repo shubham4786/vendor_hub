@@ -10,7 +10,7 @@ const postVendors = async (vendorData) => {
     zipCode,
   } = vendorData;
 
-  let data = await fetch("https://vendor-hub-75wt.vercel.app/api/vendor", {
+  let data = await fetch("/api/vendor", {
     method: "POST",
     body: JSON.stringify({
       vendorName,

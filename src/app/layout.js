@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import { Providers } from "./redux/providers";
-import Authprovider from "./components/Authprovider/Authprovider";
+// import Authprovider from "./components/Authprovider/Authprovider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,10 +15,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Authprovider>
-          <NavBar />
-          <Providers>{children}</Providers>
-        </Authprovider>
+        {/* <Authprovider> */}
+        <NavBar />
+        <Providers>{children}</Providers>
+        {/* </Authprovider> */}
       </body>
     </html>
   );
