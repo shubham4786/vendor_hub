@@ -5,7 +5,7 @@ import DeleteVendorBtn from "./DeleteVendorBtn";
 import { fetchVendorDetails } from "../redux/slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
-// import { useSession } from "next-auth/react";
+import { UserAuth } from "../context/AuthContext";
 const itemsPerPage = 5;
 
 const VendorsTable = () => {
@@ -14,18 +14,18 @@ const VendorsTable = () => {
   const vendor = useSelector((data) => data.vendorData.status);
 
   const router = useRouter();
-  // const session = useSession();
+  const { user } = UserAuth();
   useEffect(() => {
     dispatch(fetchVendorDetails()).catch((error) => {
       console.error("Error fetching data:", error);
     });
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (session.status !== "authenticated") {
-  //     router.push("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
 

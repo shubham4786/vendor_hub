@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import postVendors from "./postVendors";
 import { useRouter } from "next/navigation";
-// import { useSession } from "next-auth/react";
+import { UserAuth } from "../context/AuthContext";
 
 const AddVendorForm = () => {
   const [vendorData, setVendorData] = useState({
@@ -17,13 +17,13 @@ const AddVendorForm = () => {
   });
 
   const router = useRouter();
-  // const session = useSession();
+  const { user } = UserAuth();
 
-  // useEffect(() => {
-  //   if (session.status !== "authenticated") {
-  //     router.push("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
